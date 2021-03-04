@@ -13,7 +13,7 @@ module.exports = {  //Aquí se encuentra toda la configuración de lo que va a s
     resolve: {
         extensions: ['.js'], //Extensiones que vamos a utilizar.
     },
-    mode: 'production',
+    mode: 'development',
     module: { //Se crea un modulo con las reglas necesarias que vamos a utilizar.
         rules: [    //Reglas
             {   // Estructura de Babel
@@ -40,7 +40,7 @@ module.exports = {  //Aquí se encuentra toda la configuración de lo que va a s
     plugins: [  //Establecemos los plugins que vamos a utilizar
         new HtmlWebpackPlugin(    //Permite trabajar con los archivos HTML
             {
-                inject: true,   //Cómo vamos a inyectar un valor a un archivo HTML.
+                // inject: true,   //Cómo vamos a inyectar un valor a un archivo HTML.
                 template: './public/index.html',    //Dirección donde se encuentra el template principal
                 filename: './index.html'    //El nombre que tendrá el archivo
             }
@@ -52,5 +52,11 @@ module.exports = {  //Aquí se encuentra toda la configuración de lo que va a s
         //         {from: './src/styles/index.css', to: ''},
         //     ]
         // }),
-    ]
+    ],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 3006,
+        open: true
+    }
 }
